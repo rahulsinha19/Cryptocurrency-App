@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModel
 import com.rahul.cryptocurrency.domain.usecase.GetCoinDetailUseCase
 import com.rahul.cryptocurrency.presentation.viewstate.CoinDetailState
 import com.rahul.cryptocurrency.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
+@HiltViewModel
 class CoinDetailViewModel @Inject constructor(
     private val getCoinDetailUseCase: GetCoinDetailUseCase,
     savedStateHandle: SavedStateHandle
