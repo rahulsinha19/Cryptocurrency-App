@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CoinDetailResponse(
     @SerializedName("id")
-    val coinId: String,
+    var coinId: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("description")

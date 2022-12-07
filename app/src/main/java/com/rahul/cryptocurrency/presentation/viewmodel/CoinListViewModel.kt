@@ -26,7 +26,7 @@ class CoinListViewModel @Inject constructor(private val getCoinListUseCase: GetC
         getCoinListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _state.value = CoinListState(coinList = result.data ?: emptyList())
+                    _state.value = CoinListState(coinList = result.data ?: ArrayList())
                 }
                 is Resource.Error -> {
                     _state.value = CoinListState(

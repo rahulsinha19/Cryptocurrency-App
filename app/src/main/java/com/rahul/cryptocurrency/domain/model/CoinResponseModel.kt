@@ -1,8 +1,11 @@
 package com.rahul.cryptocurrency.domain.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-data class CoinListResponse(
+@Parcelize
+data class CoinResponseModel(
     @SerializedName("id")
     val id: String,
     @SerializedName("is_active")
@@ -13,4 +16,4 @@ data class CoinListResponse(
     val rank: Int,
     @SerializedName("symbol")
     val symbol: String,
-)
+) : Parcelable

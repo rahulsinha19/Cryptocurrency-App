@@ -6,11 +6,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rahul.cryptocurrency.R
 import com.rahul.cryptocurrency.databinding.CoinListBinding
-import com.rahul.cryptocurrency.domain.model.CoinListResponse
+import com.rahul.cryptocurrency.domain.model.CoinResponseModel
+import com.rahul.cryptocurrency.presentation.listeners.CoinClickListener
 
-class CoinListAdapter : RecyclerView.Adapter<CoinListAdapter.CoinListViewHolder>() {
+class CoinListAdapter(private val coinClickListener: CoinClickListener) : RecyclerView.Adapter<CoinListAdapter.CoinListViewHolder>() {
 
-    var coinList = mutableListOf<CoinListResponse>()
+    var coinList = ArrayList<CoinResponseModel>()
 
     inner class CoinListViewHolder(val viewHolder: CoinListBinding) :
         RecyclerView.ViewHolder(viewHolder.root) {
@@ -19,14 +20,17 @@ class CoinListAdapter : RecyclerView.Adapter<CoinListAdapter.CoinListViewHolder>
         private var tvSymbol: TextView = viewHolder.root.findViewById(R.id.tv_symbol)
         private var tvActive: TextView = viewHolder.root.findViewById(R.id.tv_active)
 
-        fun bind(coinListResponse: CoinListResponse) {
-            tvRank.text = coinListResponse.rank.toString() + ". "
-            tvName.text = coinListResponse.name + " "
-            tvSymbol.text = "(" + coinListResponse.symbol + ")"
-            if (coinListResponse.isActive) {
+        fun bind(coinResponseModel: CoinResponseModel) {
+            tvRank.text = coinResponseModel.rank.toString() + ". "
+            tvName.text = coinResponseModel.name + " "
+            tvSymbol.text = "(" + coinResponseModel.symbol + ")"
+            if (coinResponseModel.isActive) {
                 tvActive.text = "active"
             } else {
                 tvActive.text = "inactive"
+            }
+            viewHolder.root.setOnClickListener {
+                coinClickListener.onClick(coinResponseModel)
             }
         }
     }

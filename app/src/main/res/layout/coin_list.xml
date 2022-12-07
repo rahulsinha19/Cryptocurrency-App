@@ -7,12 +7,13 @@
 
         <variable
             name="coin_list"
-            type="com.rahul.cryptocurrency.domain.model.CoinListResponse" />
+            type="com.rahul.cryptocurrency.domain.model.CoinResponseModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
