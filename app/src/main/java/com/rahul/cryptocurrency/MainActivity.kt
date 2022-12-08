@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStack()
         } else {
-            super.onBackPressed()
+            finish()
         }
     }
 }
