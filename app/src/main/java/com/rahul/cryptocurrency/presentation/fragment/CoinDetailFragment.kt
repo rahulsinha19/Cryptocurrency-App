@@ -63,15 +63,19 @@ class CoinDetailFragment : Fragment() {
                 if (it.error.isNotEmpty()) {
                     Toast.makeText(requireContext(), it.error, Toast.LENGTH_LONG).show()
                 } else if (it.coinDetail != null){
-                    binding.rank.text = it.coinDetail?.rank.toString() + ". "
-                    binding.name.text = it.coinDetail?.name + " "
-                    binding.symbol.text = "(" + it.coinDetail?.symbol + ")"
-                    if (binding.coinDetail?.isActive == true) {
-                        binding.active.text = "inactive"
-                    } else {
+                    binding.rank.text = it.coinDetail.rank.toString() + ". "
+                    binding.name.text = it.coinDetail.name + " "
+                    binding.symbol.text = "(" + it.coinDetail.symbol + ")"
+                    if (it.coinDetail.isActive) {
                         binding.active.text = "active"
+                    } else {
+                        binding.active.text = "inactive"
                     }
-                    binding.description.text = it.coinDetail?.description
+                    if (it.coinDetail.description.isEmpty()) {
+                        binding.description.text = "No description available"
+                    } else {
+                        binding.description.text = it.coinDetail.description
+                    }
                 }
             }
         }

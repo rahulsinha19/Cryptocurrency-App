@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rahul.cryptocurrency.MainActivity
 import com.rahul.cryptocurrency.databinding.FragmentCoinListBinding
 import com.rahul.cryptocurrency.domain.model.CoinResponseModel
 import com.rahul.cryptocurrency.presentation.adapter.CoinListAdapter
@@ -67,6 +68,8 @@ class CoinListFragment : Fragment(), CoinClickListener {
 
     override fun onClick(coinResponseModel: CoinResponseModel) {
         var fragment = CoinDetailFragment.newInstance(coinResponseModel)
-        childFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, fragment).commit()
+        if (activity is MainActivity) {
+            (activity as MainActivity).addFragment(fragment)
+        }
     }
 }
